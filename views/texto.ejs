@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postagens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Postagens Recentes</h1>
+        <ul id="postagens-list"></ul>
+
+        <script>
+            // Faz uma solicitação AJAX para obter as postagens do servidor
+            fetch('/api/postagens')
+                .then(response => response.json())
+                .then(postagens => {
+                    const postagensList = document.getElementById('postagens-list');
+                    
+                    if (postagens && postagens.length) {
+                        postagens.forEach(post => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = post.name;
+                            postagensList.appendChild(listItem);
+                        });
+                    } else {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = 'Nenhuma postagem disponível.';
+                        postagensList.appendChild(listItem);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao obter postagens:', error);
+                });
+        </script>
+    </div>
+</body>
+
+</html>

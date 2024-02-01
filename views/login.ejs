@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+        <div>
+            <div style="text-align: center;">
+                <p class="right_title">Bem Vindo de Volta!</p>
+                <p class="right_subtitle">Faça login e entre na sua conta</p>
+            </div>
+
+            <form action="/views/login" method="POST" autocomplete="on" class="right_form">
+            
+                <section class="right_form_section">
+                    <label for="name" class="label">Nome:</label><br>
+                    <input type="text" id="name" name="name" placeholder="Nome" class="input" required><br>
+                </section>
+            
+                <section>
+                    <label for="email" class="label">Email:</label><br>
+                    <input type="text" id="email" name="email" placeholder="Email" class="input" required><br>
+                </section>
+            
+                <section class="right_form_section">
+                    <label for="senha" class="label">Senha:</label><br>
+                    <input type="password" id="senha" name="password" placeholder="Senha" class="input" required><br>
+                </section>
+
+                <span>
+                    <a href="/home">
+                        <input type="submit" value="ENTRAR" class="btnLogin-popup">
+                    </a>
+                </span>
+            </form>
+
+            <div class="batom">
+                <p >Ainda não tem uma conta?</p>
+                <span>
+                    <a class="btn" href="/cadastro">
+                        <p>Cadastre-se</p>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cadastroLink = document.getElementById('cadastro-link');
+        if (cadastroLink) {
+            cadastroLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = '/cadastro';
+            });
+        }
+    });
+</script>
+
+</html>
